@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    h1= title
+    p ProsperWorks
+
+    // Wrapper
+    #wrapper
+
+        // ADD LEAD
+
+        h2 Add LEAD
+        #addLead
+            fieldset
+                input#inputUserName(type='text', placeholder='Name')
+                input#inputUserEmail(type='text', placeholder='Email')
+                br
+                button#btnAddLead Add Lead
+
+        // ADD USER
+
+        // LEAD LIST
+
+        h2 Lead List
+        #leadList
+            table
+                thead
+                    th Name
+                    th Email
+                tbody
+
+        // /LEADl LIST
+
+    // /WRAPPER
