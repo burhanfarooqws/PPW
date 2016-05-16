@@ -1,4 +1,5 @@
 var express = require('express');
+var formidable = require('formidable');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -9,11 +10,13 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/nodetest2');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
 var leads = require('./routes/leads');
+var upload = require('./routes/upload');
+var linkedin = require('./routes/linkedin');
 
 var app = express();
+
+global.appRoot = path.resolve(__dirname);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,9 +36,9 @@ app.use(function(req,res,next){
     next();
 });
 
-app.use('/', routes);
-app.use('/users', users);
 app.use('/leads', leads);
+app.use('/upload', upload);
+app.use('/linkedin', linkedin);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
